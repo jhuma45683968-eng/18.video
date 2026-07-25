@@ -1,10 +1,8 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
 import { getFirestore, collection, addDoc, getDocs, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
-// ১. আপনার অ্যাডমিন পাসওয়ার্ড
 const ADMIN_SECRET_KEY = "lala";
 
-// ২. লগইন ও সিকিউরিটি লজিক (যাতে ডাটাবেজ ছাড়া লগইন কাজ করে)
 const loginModal = document.getElementById('loginModal');
 const adminPanel = document.getElementById('adminPanel');
 const loginBtn = document.getElementById('loginBtn');
@@ -33,8 +31,6 @@ if (loginBtn) {
     });
 }
 
-// ৩. ফায়ারবেস কনফিগারেশন 
-// (ভবিষ্যতে এখানে আপনার ফায়ারবেসের আসল কোড বসাবেন)
 const firebaseConfig = {
     apiKey: "YOUR_API_KEY",
     authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
@@ -44,16 +40,14 @@ const firebaseConfig = {
     appId: "YOUR_APP_ID"
 };
 
-// ৪. ডাটাবেজ কানেকশন এবং এরর হ্যান্ডেলিং (যাতে সাইট ক্র্যাশ না করে)
 let db;
 try {
     const app = initializeApp(firebaseConfig);
     db = getFirestore(app);
 } catch (error) {
-    console.warn("Firebase is not configured properly yet. Forms will not save data.");
+    console.warn("Firebase not configured.");
 }
 
-// ৫. হোম পেজের ভিডিও লোডিং লজিক
 if (db && document.getElementById('videoGrid')) {
     loadDynamicBanner();
     loadVideoGallery();
@@ -86,7 +80,7 @@ async function loadVideoGallery() {
             grid.appendChild(card);
         });
     } catch (error) {
-        grid.innerHTML = `<p class="loading-text">Database connected but unable to fetch videos.</p>`;
+        grid.innerHTML = `<p class="loading-text">Error fetching videos.</p>`;
     }
 }
 
@@ -109,43 +103,69 @@ async function loadDynamicBanner() {
     } catch (e) {}
 }
 
-// ৬. অ্যাডমিন প্যানেল ফর্ম সাবমিট লজিক
+// Helper function to convert gallery file to Base64 string so it can save directly to Firestore
+const convertFileToBase64 = (file) => {
+    return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = (error) => reject(error);
+    });
+};
+
 if (loginBtn) {
     document.getElementById('videoUploadForm').addEventListener('submit', async (e) => {
         e.preventDefault();
-        if(!db) return alert("Firebase ডাটাবেজ কানেক্ট করা নেই! আগে script.js ফাইলে API Key বসান।");
+        if(!db) return alert("Firebase ডাটাবেজ কানেক্ট করা নেই!");
         
         const saveBtn = document.getElementById('saveVideoBtn');
-        saveBtn.innerText = "Saving to Cloud...";
+        saveBtn.innerText = "Processing & Saving...";
+
         try {
+            const fileInput = document.getElementById('videoThumbFile').files[0];
+            const base64Thumbnail = await convertFileToBase64(fileInput);
+
             await addDoc(collection(db, "videos"), {
                 title: document.getElementById('videoTitle').value,
                 description: document.getElementById('videoDesc').value,
-                thumbnail: document.getElementById('videoThumb').value,
+                thumbnail: base64Thumbnail,
                 telegramLink: document.getElementById('videoTelegramLink').value,
                 createdAt: new Date()
             });
             alert("ভিডিও সফলভাবে আপলোড হয়েছে!");
             document.getElementById('videoUploadForm').reset();
-        } catch (err) { alert("আপলোড ব্যর্থ হয়েছে।"); } 
-        finally { saveBtn.innerText = "Save Video to Cloud"; }
+        } catch (err) { 
+            console.error(err);
+            alert("আপলোড ব্যর্থ হয়েছে। ফাইল সাইজ অনেক বড় হতে পারে।"); 
+        } finally { 
+            saveBtn.innerText = "Save Video to Cloud"; 
+        }
     });
 
     document.getElementById('bannerUploadForm').addEventListener('submit', async (e) => {
         e.preventDefault();
-        if(!db) return alert("Firebase ডাটাবেজ কানেক্ট করা নেই! আগে script.js ফাইলে API Key বসান।");
+        if(!db) return alert("Firebase ডাটাবেজ কানেক্ট করা নেই!");
         
         const bannerBtn = document.getElementById('saveBannerBtn');
-        bannerBtn.innerText = "Updating Banner...";
+        bannerBtn.innerText = "Processing Banner...";
+
         try {
+            const fileInput = document.getElementById('bannerFile').files[0];
+            const base64Media = await convertFileToBase64(fileInput);
+            const type = document.getElementById('bannerType').value;
+
             await setDoc(doc(db, "settings", "liveBanner"), {
-                type: document.getElementById('bannerType').value,
-                url: document.getElementById('bannerUrl').value,
+                type: type,
+                url: base64Media,
                 telegramLink: document.getElementById('bannerTelegramLink').value
             });
-            alert("ব্যানার সফলভাবে আপডেট হয়েছে!");
+            alert("লাইভ ব্যানার সফলভাবে আপডেট হয়েছে!");
             document.getElementById('bannerUploadForm').reset();
-        } catch (err) { alert("ব্যানার আপডেট ব্যর্থ হয়েছে।"); } 
-        finally { bannerBtn.innerText = "Update Live Banner"; }
+        } catch (err) { 
+            console.error(err);
+            alert("ব্যানার আপডেট ব্যর্থ হয়েছে।"); 
+        } finally { 
+            bannerBtn.innerText = "Update Live Banner"; 
+        }
     });
 }
