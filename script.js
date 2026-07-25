@@ -113,7 +113,7 @@ if (loginBtn) {
             await addDoc(collection(db, "videos"), {
                 title: document.getElementById('videoTitle').value,
                 description: document.getElementById('videoDesc').value,
-                thumbnail: imageName, // গিটহাব ফাইলের নাম সরাসরি সেভ হবে
+                thumbnail: imageName,
                 telegramLink: document.getElementById('videoTelegramLink').value,
                 createdAt: new Date()
             });
@@ -137,7 +137,7 @@ if (loginBtn) {
         try {
             const bannerName = document.getElementById('bannerFileName').value.trim();
             await setDoc(doc(db, "settings", "liveBanner"), {
-                url: bannerName, // গিটহাব ফাইলের নাম ব্যানার হিসেবে সেট হবে
+                url: bannerName,
                 telegramLink: document.getElementById('bannerTelegramLink').value
             });
 
