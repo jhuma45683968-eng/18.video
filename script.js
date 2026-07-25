@@ -1,4 +1,3 @@
-// আপনার সব ভিডিও ও ব্যানারের তালিকা এখানে সরাসরি রাখা হলো
 const allVideosBanners = [
     {
         imageName: "IMG_20260725_141801_602.jpg",
@@ -40,15 +39,13 @@ function loadAllVideosGallery() {
             
             card.innerHTML = `
                 <div class="thumbnail-container">
-                    <img src="${item.imageName}" alt="Thumbnail">
-                    <div class="play-overlay"><i class="fa-solid fa-circle-play"></i></div>
+                    <img src="${item.imageName}" alt="Thumbnail" onerror="this.onerror=null; this.src='https://via.placeholder.com/600x300?text=Image+Not+Found';">
                 </div>
                 <div class="video-info">
                     <h3>${item.title}</h3>
                 </div>
             `;
 
-            // কার্ডে ক্লিক করলে নির্দিষ্ট টেলিগ্রাম লিংকে চলে যাবে
             card.addEventListener('click', () => {
                 window.location.href = item.telegramLink;
             });
