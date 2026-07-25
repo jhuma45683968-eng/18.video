@@ -1,6 +1,6 @@
 // Import Firebase SDKs from CDN
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-import { getFirestore, collection, add슐, getDocs, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+import { getFirestore, collection, addDoc, getDocs, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
 // ==========================================
 // TODO: PASTE YOUR FIREBASE CONFIGURATION HERE
@@ -18,8 +18,8 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-// Set your Admin Password Hash or simple plaintext key for local session
-const ADMIN_SECRET_KEY = "LalaAdmin2026@VIP"; // Change this to your secure password
+// Admin Password (updated to 'lala')
+const ADMIN_SECRET_KEY = "lala";
 
 // --- INDEX.HTML LOGIC ---
 if (document.getElementById('videoGrid')) {
