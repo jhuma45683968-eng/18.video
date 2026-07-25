@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>『𝐀𝐝𝐮𝐥𝐭 𝐙𝐨𝐧𝐞』- VIP Platform</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Top Notification Marquee -->
+    <div class="marquee-container">
+        <div class="marquee-text">
+            <i class="fa-solid fa-bullhorn"></i> ভিডিও দেখতে অবশ্যই আপনার মোবাইলে টেলিগ্রাম অ্যাপসটি ডাউনলোড করা থাকতে হবে আর অ্যাকাউন্ট খোলা থাকতে হবে।
+        </div>
+    </div>
+
+    <!-- Header / Navbar -->
+    <header class="navbar">
+        <div class="nav-left">
+            <h1 class="logo">『𝐀𝐝𝐮𝐥𝐭 𝐙𝐨𝐧𝐞』</h1>
+        </div>
+        <div class="nav-right">
+            <a href="admin.html" class="admin-link-btn" target="_blank"><i class="fa-solid fa-lock"></i> Admin</a>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="main-container">
+        
+        <!-- Live Video / Dynamic Banner Section -->
+        <section class="banner-section" id="dynamicBannerContainer">
+            <!-- Dynamically populated via Firebase -->
+            <div class="banner-placeholder">
+                <p>Loading Live Banner...</p>
+            </div>
+        </section>
+
+        <!-- Video Gallery Grid Section -->
+        <section class="gallery-section">
+            <div class="section-title">
+                <h2><i class="fa-solid fa-fire"></i> Exclusive Videos</h2>
+            </div>
+            <div class="video-grid" id="videoGrid">
+                <!-- Dynamically populated via Firebase -->
+                <p class="loading-text">Loading videos from cloud database...</p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 『𝐀𝐝𝐮𝐥𝐭 𝐙𝐨𝐧𝐞』. All Rights Reserved. Hosted on GitHub Pages.</p>
+    </footer>
+
+    <!-- Firebase App (CDN) & Custom Logic -->
+    <script type="module" src="script.js"></script>
+</body>
+</html>
