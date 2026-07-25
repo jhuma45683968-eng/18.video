@@ -100,8 +100,9 @@ async function loadDynamicBanner() {
     } catch (e) {}
 }
 
-if (loginBtn) {
-    document.getElementById('videoUploadForm').addEventListener('submit', async (e) => {
+const videoForm = document.getElementById('videoUploadForm');
+if (videoForm) {
+    videoForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         if(!db) return alert("Firebase connected নাই!");
 
@@ -119,15 +120,18 @@ if (loginBtn) {
             });
 
             alert("ভিডিও সফলভাবে সেভ হয়েছে!");
-            document.getElementById('videoUploadForm').reset();
+            videoForm.reset();
         } catch (err) {
             alert("সেভ করতে সমস্যা হয়েছে।");
         } finally {
             saveBtn.innerText = "Save Video to Cloud";
         }
     });
+}
 
-    document.getElementById('bannerUploadForm').addEventListener('submit', async (e) => {
+const bannerForm = document.getElementById('bannerUploadForm');
+if (bannerForm) {
+    bannerForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         if(!db) return alert("Firebase connected নাই!");
 
@@ -142,7 +146,7 @@ if (loginBtn) {
             });
 
             alert("লাইভ ব্যানার সফলভাবে আপডেট হয়েছে!");
-            document.getElementById('bannerUploadForm').reset();
+            bannerForm.reset();
         } catch (err) {
             alert("ব্যানার আপডেট ব্যর্থ হয়েছে।");
         } finally {
