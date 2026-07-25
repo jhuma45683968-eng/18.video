@@ -1,9 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
 import { getFirestore, collection, addDoc, getDocs, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
-// ==========================================
-// আপনার ফায়ারবেস কনফিগারেশন এখানে বসান
-// ==========================================
 const firebaseConfig = {
     apiKey: "YOUR_API_KEY",
     authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
@@ -19,9 +16,7 @@ let db;
 try {
     const app = initializeApp(firebaseConfig);
     db = getFirestore(app);
-} catch (error) {
-    console.warn("Firebase configuration error.");
-}
+} catch (error) {}
 
 const loginModal = document.getElementById('loginModal');
 const adminPanel = document.getElementById('adminPanel');
@@ -105,72 +100,53 @@ async function loadDynamicBanner() {
     } catch (e) {}
 }
 
-const convertFileToBase64 = (file) => {
-    return new Promise((resolve, reject) => {
-        // Check file size (Limit to 1MB to prevent Firebase crash)
-        if (file.size > 1048576) {
-            reject(new Error("ফাইলের সাইজ ১ মেগাবাইটের (1MB) কম হতে হবে! ছোট ছবি সিলেক্ট করুন।"));
-            return;
-        }
-        const reader = new FileReader();
-        reader.readAsDataURL(file);
-        reader.onload = () => resolve(reader.result);
-        reader.onerror = (error) => reject(error);
-    });
-};
-
 if (loginBtn) {
     document.getElementById('videoUploadForm').addEventListener('submit', async (e) => {
         e.preventDefault();
-        if(!db) return alert("ফায়ারবেস কানেক্ট করা নেই!");
-        
+        if(!db) return alert("Firebase connected নাই!");
+
         const saveBtn = document.getElementById('saveVideoBtn');
-        saveBtn.innerText = "Processing & Saving...";
+        saveBtn.innerText = "Saving...";
 
         try {
-            const fileInput = document.getElementById('videoThumbFile').files[0];
-            const base64Thumbnail = await convertFileToBase64(fileInput);
-
+            const imageName = document.getElementById('videoThumbName').value.trim();
             await addDoc(collection(db, "videos"), {
                 title: document.getElementById('videoTitle').value,
                 description: document.getElementById('videoDesc').value,
-                thumbnail: base64Thumbnail,
+                thumbnail: imageName, // গিটহাব ফাইলের নাম সরাসরি সেভ হবে
                 telegramLink: document.getElementById('videoTelegramLink').value,
                 createdAt: new Date()
             });
 
-            alert("ভিডিও সফলভাবে আপলোড হয়েছে!");
+            alert("ভিডিও সফলভাবে সেভ হয়েছে!");
             document.getElementById('videoUploadForm').reset();
-        } catch (err) { 
-            alert(err.message || "আপলোড ব্যর্থ হয়েছে।"); 
-        } finally { 
-            saveBtn.innerText = "Save Video to Cloud"; 
+        } catch (err) {
+            alert("সেভ করতে সমস্যা হয়েছে।");
+        } finally {
+            saveBtn.innerText = "Save Video to Cloud";
         }
     });
 
     document.getElementById('bannerUploadForm').addEventListener('submit', async (e) => {
         e.preventDefault();
-        if(!db) return alert("ফায়ারবেস কানেক্ট করা নেই!");
-        
+        if(!db) return alert("Firebase connected নাই!");
+
         const bannerBtn = document.getElementById('saveBannerBtn');
-        bannerBtn.innerText = "Processing Banner...";
+        bannerBtn.innerText = "Updating...";
 
         try {
-            const fileInput = document.getElementById('bannerFile').files[0];
-            const base64Media = await convertFileToBase64(fileInput);
-
+            const bannerName = document.getElementById('bannerFileName').value.trim();
             await setDoc(doc(db, "settings", "liveBanner"), {
-                type: "image",
-                url: base64Media,
+                url: bannerName, // গিটহাব ফাইলের নাম ব্যানার হিসেবে সেট হবে
                 telegramLink: document.getElementById('bannerTelegramLink').value
             });
 
-            alert("ব্যানার সফলভাবে আপডেট হয়েছে!");
+            alert("লাইভ ব্যানার সফলভাবে আপডেট হয়েছে!");
             document.getElementById('bannerUploadForm').reset();
-        } catch (err) { 
-            alert(err.message || "ব্যানার আপডেট ব্যর্থ হয়েছে।"); 
-        } finally { 
-            bannerBtn.innerText = "Update Live Banner"; 
+        } catch (err) {
+            alert("ব্যানার আপডেট ব্যর্থ হয়েছে।");
+        } finally {
+            bannerBtn.innerText = "Update Live Banner";
         }
     });
 }
