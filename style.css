@@ -21,7 +21,6 @@ body {
     min-height: 100vh;
 }
 
-/* Marquee Header */
 .marquee-container {
     background-color: var(--accent-color);
     color: #fff;
@@ -43,7 +42,6 @@ body {
     100% { transform: translate(-100%, 0); }
 }
 
-/* Navbar */
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -76,14 +74,12 @@ body {
     background: var(--accent-color);
 }
 
-/* Main Container */
 .main-container {
     max-width: 1200px;
     margin: 20px auto;
     padding: 0 20px;
 }
 
-/* Banner Section */
 .banner-section {
     width: 100%;
     height: 350px;
@@ -100,7 +96,7 @@ body {
 .banner-media {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Ensures responsive, proportional fitting without distortion */
+    object-fit: cover;
     display: block;
 }
 
@@ -112,7 +108,6 @@ body {
     color: var(--text-muted);
 }
 
-/* Video Gallery Grid */
 .section-title {
     margin-bottom: 20px;
     border-left: 4px solid var(--accent-color);
@@ -196,7 +191,6 @@ body {
     overflow: hidden;
 }
 
-/* Footer */
 footer {
     text-align: center;
     padding: 20px;
@@ -207,7 +201,6 @@ footer {
     font-size: 0.85rem;
 }
 
-/* Admin Specific Styling */
 .admin-body {
     background-color: #0b0b0b;
 }
@@ -285,6 +278,7 @@ footer {
 }
 
 .admin-header {
+    data-display: flex;
     display: flex;
     justify-content: space-between;
     align-items: center;
