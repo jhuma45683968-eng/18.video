@@ -1,4 +1,31 @@
-import { allVideosBanners } from "./banners.js";
+// আপনার সব ভিডিও ও ব্যানারের তালিকা এখানে সরাসরি রাখা হলো
+const allVideosBanners = [
+    {
+        imageName: "IMG_20260725_141801_602.jpg",
+        title: "সেরা সব নতুন এডাল ভিডিও দেখতে নিয়মিত আমাদের প্রিমিয়াম সাইটে যোগ দিন 🔞 - ১",
+        telegramLink: "https://t.me/s2PIkZvtaT5lNmY1/3"
+    },
+    {
+        imageName: "IMG_20260725_195719_596.jpg",
+        title: "সেরা সব নতুন এডাল ভিডিও দেখতে নিয়মিত আমাদের প্রিমিয়াম সাইটে যোগ দিন 🔞 - ২",
+        telegramLink: "https://t.me/Adult_Zone_01_Official/4"
+    },
+    {
+        imageName: "IMG_20260725_195743_656.jpg",
+        title: "সেরা সব নতুন এডাল ভিডিও দেখতে নিয়মিত আমাদের প্রিমিয়াম সাইটে যোগ দিন 🔞 - ৩",
+        telegramLink: "https://t.me/AdultZone01_Real/4"
+    },
+    {
+        imageName: "IMG_20260725_195807_798.jpg",
+        title: "সেরা সব নতুন এডাল ভিডিও দেখতে নিয়মিত আমাদের প্রিমিয়াম সাইটে যোগ দিন 🔞 - ৪",
+        telegramLink: "https://t.me/Adult_Zone_01_BD/4"
+    },
+    {
+        imageName: "IMG_20260725_195828_609.jpg",
+        title: "সেরা সব নতুন এডাল ভিডিও দেখতে নিয়মিত আমাদের প্রিমিয়াম সাইটে যোগ দিন 🔞 - ৫",
+        telegramLink: "https://t.me/AdultZone01_Channel/4"
+    }
+];
 
 function loadAllVideosGallery() {
     const gridContainer = document.getElementById('videoGalleryGrid');
@@ -21,7 +48,7 @@ function loadAllVideosGallery() {
                 </div>
             `;
 
-            // ব্যানারে বা কার্ডে ক্লিক করলে নির্দিষ্ট টেলিগ্রাম লিংকে চলে যাবে
+            // কার্ডে ক্লিক করলে নির্দিষ্ট টেলিগ্রাম লিংকে চলে যাবে
             card.addEventListener('click', () => {
                 window.location.href = item.telegramLink;
             });
@@ -29,7 +56,7 @@ function loadAllVideosGallery() {
             gridContainer.appendChild(card);
         });
     } else {
-        gridContainer.innerHTML = `<p class="loading-text">কোনো ভিডিও ব্যানার পাওয়া যায়নি।</p>`;
+        gridContainer.innerHTML = `<p class="loading-text" style="text-align:center; padding:20px; color:#aaa;">কোনো ভিডিও ব্যানার পাওয়া যায়নি।</p>`;
     }
 }
 
