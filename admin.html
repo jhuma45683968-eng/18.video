@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - 『𝐀𝐝𝐮𝐥𝐭 𝐙𝐨𝐧𝐞』</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="admin-body">
+
+    <!-- Login Overlay -->
+    <div id="loginModal" class="login-overlay">
+        <div class="login-card">
+            <h2><i class="fa-solid fa-shield-halved"></i> Admin Authentication</h2>
+            <p>Enter your password to access the control panel.</p>
+            <input type="password" id="adminPasswordInput" placeholder="Enter Admin Password...">
+            <button id="loginBtn" class="primary-btn">Login</button>
+            <p id="loginError" class="error-msg"></p>
+        </div>
+    </div>
+
+    <!-- Main Admin Panel (Hidden until authenticated) -->
+    <div id="adminPanel" class="admin-panel hidden">
+        <header class="admin-header">
+            <h1>『𝐀𝐝𝐮𝐥𝐭 𝐙𝐨𝐧𝐞』 Admin Portal</h1>
+            <button id="logoutBtn" class="danger-btn"><i class="fa-solid fa-right-from-bracket"></i> Logout</button>
+        </header>
+
+        <div class="admin-grid">
+            <!-- Upload Video Form -->
+            <div class="admin-card">
+                <h2><i class="fa-solid fa-video"></i> Upload New Video</h2>
+                <form id="videoUploadForm">
+                    <div class="form-group">
+                        <label>Video Title</label>
+                        <input type="text" id="videoTitle" required placeholder="Enter catchy title...">
+                    </div>
+                    <div class="form-group">
+                        <label>Description</label>
+                        <textarea id="videoDesc" rows="3" required placeholder="Enter short description..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Thumbnail Image URL</label>
+                        <input type="url" id="videoThumb" required placeholder="https://image-link.com/photo.jpg">
+                    </div>
+                    <div class="form-group">
+                        <label>Telegram Video / Channel Redirect Link</label>
+                        <input type="url" id="videoTelegramLink" required placeholder="https://t.me/your_channel/123">
+                    </div>
+                    <button type="submit" class="primary-btn" id="saveVideoBtn">Save Video to Cloud</button>
+                </form>
+            </div>
+
+            <!-- Upload Live Banner Form -->
+            <div class="admin-card">
+                <h2><i class="fa-solid fa-film"></i> Update Live Banner Video/Image</h2>
+                <form id="bannerUploadForm">
+                    <div class="form-group">
+                        <label>Banner Media Type</label>
+                        <select id="bannerType">
+                            <option value="video">Short Video Clip (15-20s MP4 URL)</option>
+                            <option value="image">Static Image Banner</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Media Direct URL (MP4 or Image Link)</label>
+                        <input type="url" id="bannerUrl" required placeholder="https://server.com/banner-video.mp4">
+                    </div>
+                    <div class="form-group">
+                        <label>Target Telegram Redirect Link</label>
+                        <input type="url" id="bannerTelegramLink" required placeholder="https://t.me/your_channel">
+                    </div>
+                    <button type="submit" class="primary-btn" id="saveBannerBtn">Update Live Banner</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="script.js"></script>
+</body>
+</html>
