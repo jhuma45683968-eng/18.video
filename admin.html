@@ -20,7 +20,7 @@
         </div>
     </div>
 
-    <!-- Main Admin Panel (Hidden until authenticated) -->
+    <!-- Main Admin Panel -->
     <div id="adminPanel" class="admin-panel hidden">
         <header class="admin-header">
             <h1>『𝐀𝐝𝐮𝐥𝐭 𝐙𝐨𝐧𝐞』 Admin Portal</h1>
@@ -41,8 +41,8 @@
                         <textarea id="videoDesc" rows="3" required placeholder="Enter short description..."></textarea>
                     </div>
                     <div class="form-group">
-                        <label>Thumbnail Image URL</label>
-                        <input type="url" id="videoThumb" required placeholder="https://image-link.com/photo.jpg">
+                        <label>Select Thumbnail Image from Gallery</label>
+                        <input type="file" id="videoThumbFile" accept="image/*" required>
                     </div>
                     <div class="form-group">
                         <label>Telegram Video / Channel Redirect Link</label>
@@ -54,18 +54,18 @@
 
             <!-- Upload Live Banner Form -->
             <div class="admin-card">
-                <h2><i class="fa-solid fa-film"></i> Update Live Banner Video/Image</h2>
+                <h2><i class="fa-solid fa-film"></i> Update Live Banner (Video/Image)</h2>
                 <form id="bannerUploadForm">
                     <div class="form-group">
                         <label>Banner Media Type</label>
                         <select id="bannerType">
-                            <option value="video">Short Video Clip (15-20s MP4 URL)</option>
-                            <option value="image">Static Image Banner</option>
+                            <option value="video">Short Video Clip (From Gallery)</option>
+                            <option value="image">Static Image (From Gallery)</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <label>Media Direct URL (MP4 or Image Link)</label>
-                        <input type="url" id="bannerUrl" required placeholder="https://server.com/banner-video.mp4">
+                        <label>Select Media File from Gallery</label>
+                        <input type="file" id="bannerFile" accept="video/*,image/*" required>
                     </div>
                     <div class="form-group">
                         <label>Target Telegram Redirect Link</label>
