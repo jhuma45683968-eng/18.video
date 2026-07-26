@@ -76,7 +76,7 @@ const allVideosBanners = [
     },
     {
         mediaName: "IMG_20260725_232816_198.jpg",
-        title: "সেরا সব নতুন এডাল ভিডিও দেখতে নিয়মিত আমাদের প্রিমিয়াম সাইটে যোগ দিন 🔞",
+        title: "সেরা সব নতুন এডাল ভিডিও দেখতে নিয়মিত আমাদের প্রিমিয়াম সাইটে যোগ দিন 🔞",
         telegramLink: "https://t.me/Official_Adult_Zone_01/6?single"
     },
     {
@@ -164,7 +164,8 @@ function loadAllVideosGallery() {
             
             let mediaHtml = "";
             if (item.mediaName.toLowerCase().endsWith('.mp4')) {
-                mediaHtml = `<video src="${item.mediaName}" autoplay muted loop playsinline preload="auto"></video>`;
+                // এখানে playsinline, muted, autoplay এবং preload যুক্ত করা হয়েছে যাতে মোবাইলে ভিডিও চলতে সমস্যা না করে
+                mediaHtml = `<video src="${item.mediaName}" autoplay muted loop playsinline preload="auto" webkit-playsinline></video>`;
             } else {
                 mediaHtml = `<img src="${item.mediaName}" alt="Thumbnail">`;
             }
