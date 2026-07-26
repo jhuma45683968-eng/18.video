@@ -76,13 +76,78 @@ const allVideosBanners = [
     },
     {
         mediaName: "IMG_20260725_232816_198.jpg",
-        title: "সেরা সব নতুন এডাল ভিডিও দেখতে নিয়মিত আমাদের প্রিমিয়াম সাইটে যোগ দিন 🔞",
+        title: "সেরا সব নতুন এডাল ভিডিও দেখতে নিয়মিত আমাদের প্রিমিয়াম সাইটে যোগ দিন 🔞",
         telegramLink: "https://t.me/Official_Adult_Zone_01/6?single"
     },
     {
         mediaName: "IMG_20260725_232838_320.jpg",
         title: "সেরা সব নতুন এডাল ভিডিও দেখতে নিয়মিত আমাদের প্রিমিয়াম সাইটে যোগ দিন 🔞",
         telegramLink: "https://t.me/Adult_Zone_01_VIP/6?single"
+    },
+    {
+        mediaName: "VID_20260726_193720_879.mp4",
+        title: "সেরা সব নতুন এডাল ভিডিও দেখতে নিয়মিত আমাদের প্রিমিয়াম সাইটে যোগ দিন 🔞",
+        telegramLink: "https://t.me/AdultZone01_Updates/6?single"
+    },
+    {
+        mediaName: "VID_20260726_193951_440.mp4",
+        title: "সেরা সব নতুন এডাল ভিডিও দেখতে নিয়মিত আমাদের প্রিমিয়াম সাইটে যোগ দিন 🔞",
+        telegramLink: "https://t.me/Adult_Zone_01_Original/6?single"
+    },
+    {
+        mediaName: "VID_20260726_194110_781.mp4",
+        title: "সেরা সব নতুন এডাল ভিডিও দেখতে নিয়মিত আমাদের প্রিমিয়াম সাইটে যোগ দিন 🔞",
+        telegramLink: "https://t.me/AdultZone01_World/6?single"
+    },
+    {
+        mediaName: "VID_20260726_194213_514.mp4",
+        title: "সেরা সব নতুন এডাল ভিডিও দেখতে নিয়মিত আমাদের প্রিমিয়াম সাইটে যোগ দিন 🔞",
+        telegramLink: "https://t.me/s2PIkZvtaT5lNmY1/8?single"
+    },
+    {
+        mediaName: "VID_20260726_194305_957.mp4",
+        title: "সেরা সব নতুন এডাল ভিডিও দেখতে নিয়মিত আমাদের প্রিমিয়াম সাইটে যোগ দিন 🔞",
+        telegramLink: "https://t.me/Adult_Zone_01_Official/8?single"
+    },
+    {
+        mediaName: "VID_20260726_194411_134.mp4",
+        title: "সেরা সব নতুন এডাল ভিডিও দেখতে নিয়মিত আমাদের প্রিমিয়াম সাইটে যোগ দিন 🔞",
+        telegramLink: "https://t.me/AdultZone01_Real/8?single"
+    },
+    {
+        mediaName: "VID_20260726_194518_608.mp4",
+        title: "সেরা সব নতুন এডাল ভিডিও দেখতে নিয়মিত আমাদের প্রিমিয়াম সাইটে যোগ দিন 🔞",
+        telegramLink: "https://t.me/Adult_Zone_01_BD/8?single"
+    },
+    {
+        mediaName: "VID_20260726_194631_056.mp4",
+        title: "সেরা সব নতুন এডাল ভিডিও দেখতে নিয়মিত আমাদের প্রিমিয়াম সাইটে যোগ দিন 🔞",
+        telegramLink: "https://t.me/AdultZone01_Channel/8?single"
+    },
+    {
+        mediaName: "VID_20260726_194722_273.mp4",
+        title: "সেরা সব নতুন এডাল ভিডিও দেখতে নিয়মিত আমাদের প্রিমিয়াম সাইটে যোগ দিন 🔞",
+        telegramLink: "https://t.me/Official_Adult_Zone_01/8?single"
+    },
+    {
+        mediaName: "VID_20260726_194842_446.mp4",
+        title: "সেরা সব নতুন এডাল ভিডিও দেখতে নিয়মিত আমাদের প্রিমিয়াম সাইটে যোগ দিন 🔞",
+        telegramLink: "https://t.me/Adult_Zone_01_VIP/8?single"
+    },
+    {
+        mediaName: "VID_20260726_195754_296.mp4",
+        title: "সেরা সব নতুন এডাল ভিডিও দেখতে নিয়মিত আমাদের প্রিমিয়াম সাইটে যোগ দিন 🔞",
+        telegramLink: "https://t.me/s2PIkZvtaT5lNmY1/10?single"
+    },
+    {
+        mediaName: "VID_20260726_195853_314.mp4",
+        title: "সেরা সব নতুন এডাল ভিডিও দেখতে নিয়মিত আমাদের প্রিমিয়াম সাইটে যোগ দিন 🔞",
+        telegramLink: "https://t.me/Adult_Zone_01_Official/10?single"
+    },
+    {
+        mediaName: "VID_20260726_195949_433.mp4",
+        title: "সেরা সব নতুন এডাল ভিডিও দেখতে নিয়মিত আমাদের প্রিমিয়াম সাইটে যোগ দিন 🔞",
+        telegramLink: "https://t.me/AdultZone01_Real/10?single"
     }
 ];
 
